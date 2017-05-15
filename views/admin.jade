@@ -1,0 +1,63 @@
+doctype html
+html
+
+	head
+		title="administration"
+		meta(charset="utf8")
+		link(rel="stylesheet", href="style.css")
+		link(rel="stylesheet", href="node_modules/bootstrap/dist/css/bootstrap.min.css")
+
+	body
+			.nav.navbar-default
+				.container-fluid
+					.navbar-header
+						button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="navabr-collapse", aria-expanded="false")
+							span.sr-only Navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+						a.navbar-brand(href="#") Blog
+					#navbar-collapse.collapse.navbar-collapse
+						ul.nav.navbar-nav
+							li
+								a(href="/", role="button")
+									| Acceuil
+									span.sr-only (current)
+							li
+								a(href="/article", role="button")
+									| Articles
+									span.sr-only (current)
+						form.navbar-form.navbar-left(method="post", action="#")
+							.form-group
+								input.form-contol(type="text", placeholder="Recherche")
+							button.btn.btn-default(type="submit") Valide
+			.col-md-2
+
+			.col-md-8
+				form.form-group.row(method="POST", action="/admin")
+						label.sr-only.col-md-7(for="input title") Titre
+						input.form-control.col-md-7(type="text", id="titre",name="titre", placeholder="Titre de l'article", required)
+						label.sr-only.col-md-7(for="corps article") Article
+						textarea.form-control.col-md-7(name="editor", id="editor", rows="10", cols="80")
+						button.btn.btn-primary(type="submit") Valider
+
+			.col-md-2
+
+		.container
+			.col-md-2
+			.col-md-8
+				.table-responsive
+					table.table.table-bordered
+						thead
+							tr
+								th N°
+								th Titre
+								th Modifier
+								th Supprimer
+						tbody
+			.col-md-2
+		script(type="text/javascript", src="node_modules/jquery/dist/jquery.min.js")
+		script(src="//cdn.ckeditor.com/4.6.2/basic/ckeditor.js")
+		script(CKEDITOR.replace("editor"))
+		script(type="text/javascript", src="node_modules/bootstrap/dist/js/bootstrap.min.js")
+		script(type="text/javascript", src="app.js")
